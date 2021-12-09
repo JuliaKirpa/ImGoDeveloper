@@ -1,2 +1,2 @@
 # ImGoDeveloper
-REST API for future golang developers.
+REST API for future golang developers. Contains list of topic should to know to become junior GO developer. Users have an opportunity to cteate, update and delete topics, mark topic as done.
