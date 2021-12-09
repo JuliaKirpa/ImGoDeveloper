@@ -1,4 +1,4 @@
-package I_mGoDeveloper
+package ImGoDeveloper
 
 import (
 	"context"

@@ -1,4 +1,4 @@
-package I_mGoDeveloper
+package ImGoDeveloper
 
 type Todo struct {
 	Id          int    `json:"id"`

@@ -1,4 +1,4 @@
-module I-mGoDeveloper
+module ImGoDeveloper
 
 go 1.16
 

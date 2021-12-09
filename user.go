@@ -1,4 +1,4 @@
-package I_mGoDeveloper
+package ImGoDeveloper
 
 type User struct {
 	Id       int    `json:"-"`
