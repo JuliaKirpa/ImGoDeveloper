@@ -10,13 +10,16 @@ import (
 )
 
 func main() {
+	if err := InitConfig(); err != nil{
+		log.Fatalf("error initialization config %s", err.Error())
+	}
 
 	repos := repository.NewRepository()
 	servises := service.NewService(repos)
 	handlers := handler.NewHandler(servises)
 
 	srv := new(ImGoDeveloper.Server)
-	if err := srv.Run("8080", handlers.InitRoutes()); err != nil {
+	if err := srv.Run(viper.GetString("port"), handlers.InitRoutes()); err != nil {
 		log.Fatalf("error while running http server: %s", err.Error())
 	}
 
