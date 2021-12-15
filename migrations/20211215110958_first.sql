@@ -1,3 +1,5 @@
+-- +goose Up
+-- +goose StatementBegin
 CREATE TABLE users
 (
     id            serial       not null unique,
@@ -34,3 +36,17 @@ CREATE TABLE items_list
     item_id int references todo_items (id) on delete cascade      not null,
     list_id int references todo_lists (id) on delete cascade not null
 );
+-- +goose StatementEnd
+
+-- +goose Down
+-- +goose StatementBegin
+DROP TABLE users;
+
+DROP TABLE todo_lists;
+
+DROP TABLE user_list;
+
+DROP TABLE todo_items;
+
+DROP TABLE items_list;
+-- +goose StatementEnd
