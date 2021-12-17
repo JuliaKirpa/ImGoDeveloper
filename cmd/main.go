@@ -5,16 +5,29 @@ import (
 	"ImGoDeveloper/pkg/handler"
 	"ImGoDeveloper/pkg/repository"
 	"ImGoDeveloper/pkg/service"
+	_ "github.com/lib/pq"
 	"github.com/spf13/viper"
 	"log"
 )
 
 func main() {
-	if err := InitConfig(); err != nil{
+	if err := InitConfig(); err != nil {
 		log.Fatalf("error initialization config %s", err.Error())
 	}
 
-	repos := repository.NewRepository()
+	db, err := repository.NewPostgresDB(repository.Config{
+		Host:     "localhost",
+		Port:     "5432",
+		User:     "gipernova",
+		Password: "qwerty",
+		DBname:   "postgres",
+		SSLMode:  "disable",
+	})
+	if err != nil {
+		log.Fatalf("failed to initialize db %s", err.Error())
+	}
+
+	repos := repository.NewRepository(db)
 	servises := service.NewService(repos)
 	handlers := handler.NewHandler(servises)
 
@@ -24,6 +37,7 @@ func main() {
 	}
 
 }
+
 func InitConfig() error {
 	viper.AddConfigPath("configs")
 	viper.SetConfigName("config")

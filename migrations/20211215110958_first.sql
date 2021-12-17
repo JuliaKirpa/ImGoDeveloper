@@ -40,13 +40,13 @@ CREATE TABLE items_list
 
 -- +goose Down
 -- +goose StatementBegin
-DROP TABLE users;
-
-DROP TABLE todo_lists;
+DROP TABLE items_list;
 
 DROP TABLE user_list;
 
-DROP TABLE todo_items;
+DROP TABLE todo_lists;
 
-DROP TABLE items_list;
+DROP TABLE users;
+
+DROP TABLE todo_items;
 -- +goose StatementEnd
