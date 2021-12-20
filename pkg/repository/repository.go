@@ -7,6 +7,7 @@ import (
 
 type Authorization interface {
 	CreateUser(user ImGoDeveloper.User) (int, error)
+	GetUser(username, password string) (ImGoDeveloper.User, error)
 }
 
 type TodoList interface {
