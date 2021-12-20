@@ -14,9 +14,10 @@ require (
 	github.com/lib/pq v1.10.4
 	github.com/mattn/go-sqlite3 v2.0.3+incompatible // indirect
 	github.com/pressly/goose v2.7.0+incompatible // indirect
+	github.com/sirupsen/logrus v1.8.1
 	github.com/spf13/viper v1.10.0
 	github.com/swaggo/gin-swagger v1.3.3 // indirect
 	github.com/ziutek/mymysql v1.5.4 // indirect
 	golang.org/x/crypto v0.0.0-20211209193657-4570a0811e8b // indirect
-	golang.org/x/sys v0.0.0-20211214170744-3b038e5940ed // indirect
+	golang.org/x/sys v0.0.0-20211216021012-1d35b9e2eb4e // indirect
 )

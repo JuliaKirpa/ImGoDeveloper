@@ -7,18 +7,20 @@ import (
 	"ImGoDeveloper/pkg/service"
 	"github.com/joho/godotenv"
 	_ "github.com/lib/pq"
+	"github.com/sirupsen/logrus"
 	"github.com/spf13/viper"
-	"log"
 	"os"
 )
 
 func main() {
+	logrus.SetFormatter(new(logrus.JSONFormatter))
+
 	if err := InitConfig(); err != nil {
-		log.Fatalf("error initialization config %s", err.Error())
+		logrus.Fatalf("error initialization config %s", err.Error())
 	}
 
 	if err := godotenv.Load(); err != nil {
-		log.Fatalf("error load env variable: %s", err.Error())
+		logrus.Fatalf("error load env variable: %s", err.Error())
 	}
 
 	db, err := repository.NewPostgresDB(repository.Config{
@@ -30,7 +32,7 @@ func main() {
 		Password: os.Getenv("DB_PASSWORD"),
 	})
 	if err != nil {
-		log.Fatalf("failed to initialize db %s", err.Error())
+		logrus.Fatalf("failed to initialize db %s", err.Error())
 	}
 
 	repos := repository.NewRepository(db)
@@ -39,7 +41,7 @@ func main() {
 
 	srv := new(ImGoDeveloper.Server)
 	if err := srv.Run(viper.GetString("port"), handlers.InitRoutes()); err != nil {
-		log.Fatalf("error while running http server: %s", err.Error())
+		logrus.Fatalf("error while running http server: %s", err.Error())
 	}
 
 }

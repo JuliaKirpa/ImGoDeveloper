@@ -1,5 +1,5 @@
 MIGRATIONS_DIR := "./migrations"
-PG_DSN := "postgres://postgres:qwerty@localhost:5432/postgres?sslmode=disable"
+PG_DSN := "postgres://gipernova:qwerty@localhost:5432/postgres?sslmode=disable"
 
 .PHONY: migrate-generate
 migrate-generate:

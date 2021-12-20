@@ -15,7 +15,7 @@ CREATE TABLE todo_lists
     description varchar(255)
 );
 
-CREATE TABLE user_list
+CREATE TABLE users_lists
 (
     id      serial                                           not null unique,
     user_id int references users (id) on delete cascade      not null,
@@ -30,7 +30,7 @@ CREATE TABLE todo_items
     done boolean not null default false
 );
 
-CREATE TABLE items_list
+CREATE TABLE lists_items
 (
     id      serial                                           not null unique,
     item_id int references todo_items (id) on delete cascade      not null,

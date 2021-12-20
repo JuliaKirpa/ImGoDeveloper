@@ -1,17 +1,18 @@
 package service
 
-import "ImGoDeveloper/pkg/repository"
+import (
+	"ImGoDeveloper"
+	"ImGoDeveloper/pkg/repository"
+)
 
 type Authorization interface {
-
+	CreateUser(user ImGoDeveloper.User) (int, error)
 }
 
 type TodoList interface {
-
 }
 
 type TodoItem interface {
-
 }
 
 type Service struct {
@@ -19,6 +20,9 @@ type Service struct {
 	TodoList
 	TodoItem
 }
-func NewService(repos *repository.Repository) *Service{
-	return &Service{}
+
+func NewService(repos *repository.Repository) *Service {
+	return &Service{
+		Authorization: NewAuthService(repos.Authorization),
+	}
 }
